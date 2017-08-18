@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
+	<persistence-unit name="br.com.padaria" transaction-type="JTA">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+   		<jta-data-source>Padaria</jta-data-source>
+   		
+   		
+		
+		<class>br.com.padaria.entidade.ProdutoCompra</class>
+		<class>br.com.padaria.entidade.Produto</class>
+		<class>br.com.padaria.entidade.Cliente</class>
+		<class>br.com.padaria.entidade.Compra</class>
+		<class>br.com.padaria.entidade.Usuario</class>
+		
+
+	
+		
+		<properties>
+			<property name="eclipselink.logging.level" value="FINE"/>
+			<property name="eclipselink.logging.parameters" value="true"/>
+			<property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
+		</properties>
+	</persistence-unit>
+</persistence>

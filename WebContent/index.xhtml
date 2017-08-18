@@ -1,0 +1,41 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  template="/template.xhtml">
+	  
+	  
+	  <ui:define name="conteudo">
+	  
+	  	<p:panel header="Logar No Sistema">
+	  		
+	  		<center><h:form>
+	  				
+	  				<img src="imagens/logo.png" width="150px" height="150px" />
+	  				
+	  				<p:growl />
+	  			
+	  			<center><h:panelGrid columns="2">
+	  				
+	  				<p:outputLabel value="Usuário"/>
+	  					<h:inputText 
+	  						value="#{usuarioController.usuario.user}"/>
+	  					
+	  				<p:outputLabel value="Senha" />
+	  					<h:inputText 
+	  						 value="#{usuarioController.usuario.pass}"/>
+	  			
+	  			</h:panelGrid></center><br/>
+	  			
+	  			<p:commandButton value="Entrar"
+	  				action="#{usuarioController.logar()}" 
+	  				update="@form"/>
+	  		
+	  		</h:form></center>
+	  		
+	  	</p:panel>
+	  
+	  </ui:define>
+	  
+</ui:composition>

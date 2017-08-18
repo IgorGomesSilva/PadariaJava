@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:ui="http://java.sun.com/jsf/facelets">
+	  
+<h:head>
+	<title>Padaria</title>
+</h:head>	  
+
+
+<h:body>
+
+	<h:form>
+	
+		<p:menubar>
+			
+			<p:submenu label="Logar">
+				<p:menuitem value="Logar" url="index.jsf" />
+			</p:submenu>
+			
+			<p:submenu label="Cadastrar">
+				<p:menuitem value="Usuario" url="/cadastro/usuario.jsf" />
+			</p:submenu>
+			
+			
+		
+			
+		
+		</p:menubar>
+	
+	</h:form>
+	
+	<br/>
+	
+	<ui:insert name="conteudo" />
+
+
+</h:body>
+
+
+</html>

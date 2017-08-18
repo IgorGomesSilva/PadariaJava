@@ -1,0 +1,111 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  template="/template.xhtml">
+	  
+	  
+	  <ui:define name="conteudo">
+	  	
+	  		<p:panel header="Produto">
+	  		
+	  		<img src="imagens/paes.jpg" width="300px" height="100px" />
+	  			
+	  			<h:form>
+	  				<p:growl />
+	  				
+	  				<h:inputHidden value="#{produtoController.produto.idProduto}" />
+	  				
+	  				
+	  				<h:panelGrid columns="2">
+	  					
+	  					<p:outputLabel value="Nome:"/>
+	  					<p:inputText value="#{produtoController.produto.nome}"/>
+	  					
+	  					
+	  					<p:outputLabel value="Valor:"/>
+	  					<p:inputText value="#{produtoController.produto.valor}"/>
+	  				
+	  					
+	  					
+	  				</h:panelGrid>
+	  				
+	  				
+	  				<p:commandButton value="Salvar"
+	  					actionListener="#{produtoController.salvar()}"
+	  					update="@form" />
+	  					
+	  				<br/>
+	  				
+	  				
+	  				<p:dataTable value="#{produtoController.consultar()}"
+	  							 var="produto">
+	  						
+	  						<p:column headerText="Código">
+	  							#{produto.idProduto}
+	  						</p:column>
+	  						
+	  						<p:column headerText="Nome">
+	  							#{produto.nome}
+	  						</p:column>
+	  						
+	  						<p:column headerText="Valor">
+	  							
+	  							<h:outputText value="#{produto.valor}">
+	  								<f:convertNumber type="currency" />
+	  							</h:outputText>
+	  					
+	  						</p:column>
+	  					
+	  					
+							 
+							 <p:column headerText="Exluir">
+							 	 <p:commandButton icon="ui-icon-close"
+							 	 	actionListener="#{produtoController.excluir(produto)}"
+							 	 	update="@form"
+							 	 	process="@this" />
+							 </p:column>
+	  		
+	  				</p:dataTable>
+	  				
+	  				<h3>Exportar Para Exel</h3>
+    			<h:commandLink immediate="true">
+       		    <img src="imagens/excel.png" />
+        		<p:dataExporter type="xls" target="tbl" fileName="Padaria" pageOnly="true"/>
+    			</h:commandLink>
+    		
+    		<p:dataTable id="tbl" var="produto" value="#{produtoController.consultar()}"
+                 paginator="true" rows="10" style="margin-bottom:20px">
+    			
+    		<p:column>
+            <f:facet name="header">
+                <h:outputText value="IdProduto" />
+            </f:facet>
+            <h:outputText value="#{produto.idProduto}" />
+        </p:column>
+        	
+        	<p:column>
+            <f:facet name="header">
+                <h:outputText value="Nome" />
+            </f:facet>
+            <h:outputText value="#{produto.nome}" />
+        </p:column>
+        
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Valor" />
+            </f:facet>
+            <h:outputText value="#{produto.valor}" />
+        </p:column>
+    </p:dataTable>
+	  				
+	  				
+	  			</h:form>
+	  		
+	  		</p:panel>
+	  
+	  </ui:define>
+	  
+	  
+</ui:composition>
